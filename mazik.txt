@@ -1,0 +1,32 @@
+20 30 19 2 3 29
+NEW |NW |NS |NE |NW |NE |NSW |N |NS |NS |NE |NSW |NS |N |NS |NS |N |NS |NS |NE |
+EW |EW |NW |SE |EW |EW |NW |SE |NSW |NE |SW |NS |NE |SW |N |NSE |SW |NE |NEW |EW |
+SW |SE |SW |NS |SE |SW |SE |NW |N |E |NEW |NW |SE |NSW |SE |NW |NS |SE |W |SE |
+NW |NSE |NW |NS |N |NS |NE |SEW |EW |SW |E |SW |NS |NS |NS |SE |NSW |NE |EW |NEW |
+W |NS |S |NSE |EW |NEW |SW |NS |SE |NEW |W |NS |NS |NS |NS |NS |NS |SE |SW |E |
+SEW |NW |NS |NS |SE |W |NS |NSE |NW |S |SE |NW |NS |NS |NS |NS |N |NE |NW |SE |
+NW |SE |NSW |NE |NW |S |NS |NE |EW |NW |NS |SE |NW |NSE |NW |NE |SEW |EW |SW |NE |
+W |NS |NE |W |SE |NW |N |SE |EW |EW |NEW |NW |S |NE |EW |SW |NS |S |NSE |EW |
+W |NSE |EW |EW |NW |SE |EW |NW |SE |EW |W |S |NSE |EW |SW |NS |NE |NW |NE |EW |
+EW |NW |SE |EW |SW |NE |EW |SW |NE |EW |SEW |NW |NE |W |NS |NSE |SW |SE |SW |SE |
+EW |EW |NSW |SE |NW |SE |SW |NSE |EW |SW |NS |SE |EW |SW |NS |NS |NE |NW |NS |NE |
+EW |EW |NW |NE |SW |NE |NW |NE |EW |NW |NS |NE |SW |NS |NS |NE |EW |SW |NE |EW |
+SEW |SW |SE |SW |NE |SW |SE |EW |EW |EW |NEW |SW |NS |NS |NE |EW |W |NE |EW |EW |
+NW |NS |NS |NS |SE |NW |N |SE |EW |SW | |NS |NS |NSE |EW |EW |EW |SEW |EW |EW |
+EW |NW |NE |NW |N |SE |SEW |NW |SE |NEW |EW |NW |NS |NS |SE |EW |SW |NS |SE |EW |
+EW |EW |SW |SE |SEW |NW |NE |SW |NE |SW |SE |SW |NS |NE |NW |SE |NW |NE |NW |SE |
+EW |EW |NW |NS |NE |EW |W |NSE |SW |NS |NE |NW |NE |EW |SW |NS |SE |EW |SW |NE |
+EW |SW |SE |NW |SE |EW |SW |NS |NS |NS |S |SE |EW |W |NSE |NW |NE |SW |NE |EW |
+W |NS |NE |W |NS |SE |NW |NS |NE |NW |NS |NE |SW |SE |NW |SE |W |NSE |EW |EW |
+EW |NW |SE |SW |NS |NSE |SW |NE |SW |SE |NEW |EW |NW |NE |SW |NE |SW |NS |SE |EW |
+EW |SW |NE |NW |NS |NS |NE |EW |NW |NE |EW |SW |SE |SW |NS |SE |NW |NS |NS |E |
+SW |NSE |EW |EW |NSW |NE |EW |SW |SE |EW |SW |NS |N |NS |NE |NSW |S |NE |NEW |EW |
+NW |NS |SE |W |NS |SE |SW |NS |NE |SW |NS |NE |EW |NSW |S |NS |NS |SE |W |SE |
+EW |NW |NS |SE |NW |NE |NW |N |SE |NW |NE |EW |EW |NW |NE |NW |NS |NE |EW |NEW |
+EW |SW |NS |NE |EW |SW |E |SEW |NW |SE |SW |SE |W |SE |EW |EW |NEW |SW |SE |EW |
+W |N |NSE |EW |SW |NE |SEW |NW |SE |NW |NS |NE |SW |NE |EW |EW |SW |NS |NS |E |
+SEW |SW |NE |SW |NE |SW |NS |SE |NEW |SW |NE |SW |NS |SE |EW |SW |NS |NS |NE |EW |
+NW |NS |SE |NW |SE |NSW |NS |NS |S |NS |S |NE |NW |NS |SE |NSW |NS |NE |EW |EW |
+EW |NW |NE |EW |NW |NS |NS |NS |NS |NE |NSW |SE |EW |NW |NS |N |NS |SE |SW |E |
+SW |SE |SW |S |SE |NSW |NS |NS |NS |S |NS |NS |SE |SW |NSE |SW |NS |NS |NS |SE |
+
