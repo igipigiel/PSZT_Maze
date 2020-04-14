@@ -131,7 +131,7 @@ class Maze:
 
         def draw_circle(f,x,y):
 
-            print('<circle cx="{}" cy="{}" r="2" stroke="black" stroke-width="0.1" fill="red" />'.format(x,y), file =f)
+            print('<circle cx="{}" cy="{}" r="2" stroke="black" stroke-width="0.1" fill="magenta" />'.format(x,y), file =f)
 
         # Write the SVG image file for maze
         with open(filename, 'w') as f:
@@ -145,7 +145,7 @@ class Maze:
                   file=f)
             print('<defs>\n<style type="text/css"><![CDATA[', file=f)
             print('line {', file=f)
-            print('    stroke: #000000;\n    stroke-linecap: square;', file=f)
+            print('    stroke: #FF1493;\n    stroke-linecap: square;', file=f)
             print('    stroke-width: 5;\n}', file=f)
             print(']]></style>\n</defs>', file=f)
             # Draw the "South" and "East" walls of each cell, if present (these
@@ -246,12 +246,11 @@ class Maze:
 
         mazi = open(filename, 'w')
         print(maze_string, file = mazi)
-        print(maze_string)
         mazi.close()
 
 
 # Maze dimensions (ncols, nrows)
-nx, ny = 20, 30
+nx, ny = 40, 40
 # Maze entry position
 ix, iy = 0, 0
 
