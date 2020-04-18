@@ -22,14 +22,17 @@ class Cell:
         self.x, self.y = x, y
         self.walls = {'N': True, 'S': True, 'E': True, 'W': True}
 
+
+        #set walls when reading from file
         if walls_str != '':
             self.set_walls('N', walls_str)
             self.set_walls('S', walls_str)
             self.set_walls('E', walls_str)
             self.set_walls('W', walls_str)
+
+        #if cell has no walls
         if walls_str == ' ':
             self.walls = {'N': False, 'S': False, 'E': False, 'W': False}
-
 
 
     def set_walls(self, symbol = '', walls_string = ''):
@@ -61,7 +64,7 @@ class Maze:
 
         self.nx, self.ny = nx, ny
         self.ix, self.iy = ix, iy
-
+        #set entry and exit coordinates
         self.entry_x = nx-1
         self.entry_y = 2
         self.exit_x = 3
@@ -69,13 +72,11 @@ class Maze:
 
         self.maze_map = [[Cell(x, y) for y in range(ny)] for x in range(nx)]
 
+        #generate maze map whe reading from file
         if maze_map != 0 :
             self.maze_map = maze_map
-
-
+            #set entry and exit
             self.cell_at(self.entry_x, self.entry_y).walls['E'] = False
-
-
             if self.exit_x == nx - 1:
                 self.cell_at(self.exit_x,self.exit_y).walls['E'] = False
             elif self.exit_y == ny -1:
@@ -160,6 +161,7 @@ class Maze:
                         x1, y1, x2, y2 = (x+1)*scx, y*scy, (x+1)*scx, (y+1)*scy
                         write_wall(f, x1, y1, x2, y2)
 
+            #draw dots in cells on found path
             if path_found != 0:
                 for i in range(len(path_found)):
                     xs =  path_found[i].x * scx + scx/2
@@ -191,7 +193,6 @@ class Maze:
     def make_maze(self):
         # Total number of cells.
 
-
         n = self.nx * self.ny
         cell_stack = []
         current_cell = self.cell_at(ix, iy)
@@ -206,6 +207,7 @@ class Maze:
                 current_cell = cell_stack.pop()
                 continue
 
+            #delete walls on entry cell and exit cell
             if current_cell == self.cell_at(self.entry_x, self.entry_y):
                 current_cell.walls['N'] = False
 
@@ -221,16 +223,19 @@ class Maze:
 
 
     def save_file(self, filename):
+        """
 
+        :param filename: name of file to save
+        :return:
+
+        cell format: |walls| (N if north wall is true etc.)
+        """
 
         maze_string = str(nx) + ' ' + str(ny) + ' ' + str(self.entry_x) + ' ' + str(self.entry_y) + ' ' +  str(self.exit_x) + ' ' + str(self.exit_y) + '\n'
 
-
         for y in range (iy, ny+iy, 1):
             for x in range(ix, nx + ix, 1):
-
                 current_cell = self.cell_at(x, y)
-
                 if current_cell.walls['N'] == True:
                     maze_string = maze_string + 'N'
                 if current_cell.walls['S'] == True:
@@ -250,7 +255,7 @@ class Maze:
 
 
 # Maze dimensions (ncols, nrows)
-nx, ny = 40, 40
+nx, ny = 30, 20
 # Maze entry position
 ix, iy = 0, 0
 
