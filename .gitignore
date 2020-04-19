@@ -1,2 +1,3 @@
-**/*.txt
-**/*.svg
+!.gitignore
+*.txt
+*.svg
