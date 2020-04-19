@@ -5,6 +5,7 @@ from DFS import DFS
 from IDFS import IDFS
 import copy
 import sys
+from timeit import default_timer as timer
 
 class maze_solver:
 
@@ -46,7 +47,7 @@ class maze_solver:
 
     def find_path(self):
         maze = self.read_maze(self.filename)
-        maze.write_svg('read.svg')
+        #maze.write_svg('read.svg')
 
 
         if(self.type_ == 'bfs'):
@@ -58,6 +59,11 @@ class maze_solver:
         else:
             sys.exit('Wrong algorythm type, is: ' + self.type_ + ', should be: bfs or dfs or idfs, check spelling')
 
+        time_start = timer()
         path = algorythm.find_path()
-        maze.write_svg('abc.svg', path)
+        time_stop = timer()
+        time_passed = time_stop - time_start
+        maze.write_svg(self.filename[0:-4] +'_' + self.type_ + '.svg', path)
+
+        return time_passed
 

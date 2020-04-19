@@ -58,14 +58,14 @@ class Maze:
     def __init__(self, nx, ny, maze_map = 0, ix=0, iy=0):
         """Initialize the maze grid.
         The maze consists of nx x ny cells and will be constructed starting
-        at the cell indexed at (ix, iy).
+        at the cell indexed at (self.ix, self.iy).
 
         """
 
         self.nx, self.ny = nx, ny
         self.ix, self.iy = ix, iy
         #set entry and exit coordinates
-        self.entry_x = nx-1
+        self.entry_x = self.nx - 1
         self.entry_y = 2
         self.exit_x = 3
         self.exit_y = self.ny - 1
@@ -93,17 +93,17 @@ class Maze:
     def __str__(self):
         """Return a (crude) string representation of the maze."""
 
-        maze_rows = ['-' * nx*2]
-        for y in range(ny):
+        maze_rows = ['-' * self.nx*2]
+        for y in range(self.ny):
             maze_row = ['|']
-            for x in range(nx):
+            for x in range(self.nx):
                 if self.maze_map[x][y].walls['E']:
                     maze_row.append(' |')
                 else:
                     maze_row.append('  ')
             maze_rows.append(''.join(maze_row))
             maze_row = ['|']
-            for x in range(nx):
+            for x in range(self.nx):
                 if self.maze_map[x][y].walls['S']:
                     maze_row.append('-+')
                 else:
@@ -121,7 +121,7 @@ class Maze:
         height = 500
         width = int(height * aspect_ratio)
         # Scaling factors mapping maze coordinates to image coordinates
-        scy, scx = height / ny, width / nx
+        scy, scx = height / self.ny, width / self.nx
 
         def write_wall(f, x1, y1, x2, y2):
             """Write a single wall to the SVG image file handle f."""
@@ -152,8 +152,8 @@ class Maze:
             # Draw the "South" and "East" walls of each cell, if present (these
             # are the "North" and "West" walls of a neighbouring cell in
             # general, of course).
-            for x in range(nx):
-                for y in range(ny):
+            for x in range(self.nx):
+                for y in range(self.ny):
                     if self.cell_at(x,y).walls['S']:
                         x1, y1, x2, y2 = x*scx, (y+1)*scy, (x+1)*scx, (y+1)*scy
                         write_wall(f, x1, y1, x2, y2)
@@ -184,7 +184,7 @@ class Maze:
         neighbours = []
         for direction, (dx,dy) in delta:
             x2, y2 = cell.x + dx, cell.y + dy
-            if (0 <= x2 < nx) and (0 <= y2 < ny):
+            if (0 <= x2 < self.nx) and (0 <= y2 < self.ny):
                 neighbour = self.cell_at(x2, y2)
                 if neighbour.has_all_walls():
                     neighbours.append((direction, neighbour))
@@ -195,7 +195,7 @@ class Maze:
 
         n = self.nx * self.ny
         cell_stack = []
-        current_cell = self.cell_at(ix, iy)
+        current_cell = self.cell_at(self.ix, self.iy)
         # Total number of visited cells during maze construction.
         nv = 1
 
@@ -231,10 +231,10 @@ class Maze:
         cell format: |walls| (N if north wall is true etc.)
         """
 
-        maze_string = str(nx) + ' ' + str(ny) + ' ' + str(self.entry_x) + ' ' + str(self.entry_y) + ' ' +  str(self.exit_x) + ' ' + str(self.exit_y) + '\n'
+        maze_string = str(self.nx) + ' ' + str(self.ny) + ' ' + str(self.entry_x) + ' ' + str(self.entry_y) + ' ' +  str(self.exit_x) + ' ' + str(self.exit_y) + '\n'
 
-        for y in range (iy, ny+iy, 1):
-            for x in range(ix, nx + ix, 1):
+        for y in range (self.iy, self.ny+self.iy, 1):
+            for x in range(self.ix, self.nx + self.ix, 1):
                 current_cell = self.cell_at(x, y)
                 if current_cell.walls['N'] == True:
                     maze_string = maze_string + 'N'
@@ -253,17 +253,17 @@ class Maze:
         print(maze_string, file = mazi)
         mazi.close()
 
-
+'''
 # Maze dimensions (ncols, nrows)
-nx, ny = 30, 20
+nx, ny = 100, 100
 # Maze entry position
-ix, iy = 0, 0
+self.ix, self.iy = 0, 0
 
-#maze = Maze(nx, ny, ix, iy)
-#maze.make_maze()
-#maze.save_file('mazik.txt')
-#maze.write_svg('maze_gen.svg')
+maze = Maze(nx, ny)
+maze.make_maze()
+maze.save_file('mazik.txt')
+maze.write_svg('maze_gen.svg')
 
 #print(maze)
-
+'''
 
