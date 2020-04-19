@@ -29,58 +29,51 @@ class State:
                 return True
         return False
 
-class BFS:
-    """
-    class realizes BFS algorythm
-    fields: states open, states checked, maze
-    """
+
+class DFS:
     def __init__(self, maze):
 
         self.st_open = []
-        self.st_checked = []
         self.maze = copy.copy(maze)
 
     def is_entry(self, state):
-        """
-        check if state is the first state - at maze entry
-        :param state:
-        :return:
-        """
+
         if state.cell.x == self.maze.entry_x and state.cell.y == self.maze.entry_y:
             return True
         else:
             return False
 
     def is_exit(self, state):
-        """
-        check if state is terminal - at maze exit
-        :param state:
-        :return:
-        """
+
         if state.cell.x == self.maze.exit_x and state.cell.y == self.maze.exit_y:
+            return True
+        else:
+            return False
+
+    def is_previous(self, new_state, current_state):
+        """
+        check if new state is previous state from current - going backwards
+        :param new_state:
+        :param current_state:
+        :return: true if is previous
+        """
+        if current_state.previous_state == 0 :
+            return False
+        if new_state.cell.x == current_state.previous_state.cell.x and new_state.cell.y == current_state.previous_state.cell.y:
             return True
         else:
             return False
 
     def get_state_at_direction(self, dir, current_state):
 
-        """
-        :param dir: direction
-        :param current_state:
-        :return: next state in direction if possible, otherwise 0
-        """
-        #if there is a wall at this direction - next move not possible
         if current_state.cell.walls[dir] == True:
             return 0
-        #if current state is entry state - don't return state in the east - it's outside the maze
         if current_state.previous_state == 0 and dir == 'E':
             return 0
 
         x = current_state.cell.x
         y = current_state.cell.y
 
-        # h - move in horizontal direction (-1 West; 1 East)
-        # v - move in vertical direction (-1 North; 1 South)
         if dir == 'N':
             h = 0
             v = -1
@@ -101,43 +94,33 @@ class BFS:
         return next_state
 
     def find_path(self):
-        """
-        finds path from entry to exit
-        :return: list of cells from entry to exit
-        """
 
         directions = ['N', 'S', 'W', 'E']
         path = []
         path_found = False
         entry_state = State(self.maze.cell_at(self.maze.entry_x, self.maze.entry_y))
         current_state = entry_state
+        new_state = 0
+        depth = 0
 
-
-        while len(self.st_checked) < (self.maze.nx * self.maze.ny):
-
+        while True:
             for dir in directions:
-                #get new state at direction if possible
                 new_state = self.get_state_at_direction(dir, current_state)
                 if new_state != 0:
-                    #check if state is terminal
                     if self.is_exit(new_state):
                         path_found = True
                         break
-                    #if state was checked - do nothing
-                    if new_state.is_checked(self.st_checked) == False:
-                        self.st_open.append(new_state)
+                    #if we're not going backwards - write new state to the beggining of "st_open"
+                    if not self.is_previous(new_state, current_state):
+                        self.st_open.insert(0, new_state)
 
             if path_found:
                 current_state = new_state
                 break
-            self.st_checked.append(current_state)
             current_state = self.st_open.pop(0)
-        #write path to list
+
         while current_state != 0:
             path.append(current_state.cell)
             current_state = current_state.previous_state
 
         return path
-
-
-
