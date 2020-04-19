@@ -4,12 +4,14 @@ from BFS import BFS
 from DFS import DFS
 from IDFS import IDFS
 import copy
+import sys
 
 class maze_solver:
 
-    def __init__(self, filename, path):
-        self.type = type
+    def __init__(self, filename, type_):
+        self.type_ = type_
         self.filename = filename
+
 
     def read_maze(self, filename):
             """
@@ -46,15 +48,16 @@ class maze_solver:
         maze = self.read_maze(self.filename)
         maze.write_svg('read.svg')
 
-        if(self.type is 'bfs'):
+
+        if(self.type_ == 'bfs'):
             algorythm = BFS(maze)
-        elif(self.type is 'dfs'):
+        elif(self.type_ == 'dfs'):
             algorythm = DFS(maze)
-        elif(self.type is 'idfs'):
+        elif(self.type_ == 'idfs'):
             algorythm = IDFS(maze)
         else:
-            exit('Wrong algorythm type, check spelling')
+            sys.exit('Wrong algorythm type, is: ' + self.type_ + ', should be: bfs or dfs or idfs, check spelling')
 
         path = algorythm.find_path()
-        maze.write_svg('path.svg', path)
+        maze.write_svg('abc.svg', path)
 
