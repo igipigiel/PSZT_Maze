@@ -1,0 +1,12 @@
+10 10 9 2 3 9
+NSW |NE |NW |NE |NW |NE |NW |NS |NS |NE |
+NEW |SW |SE |EW |SEW |SW |S |NS |NSE |EW |
+W |NE |NEW |SW |NS |NS |NS |NE |NW |E |
+EW |SW |S |N |NS |NS |NE |EW |EW |EW |
+EW |NEW |NW |SE |NW |NE |SEW |EW |EW |SEW |
+EW |SW |SE |NW |SE |EW |NW |SE |SW |NE |
+W |NS |NE |EW |NEW |EW |SW |NS |NS |E |
+SW |NSE |EW |SW |E |W |NS |NS |NSE |EW |
+NW |NS |S |NSE |EW |SW |NS |NS |NS |SE |
+SW |NS |NS |NS |S |NS |NS |NS |NS |NSE |
+
