@@ -1,7 +1,7 @@
 from Mazi import Cell
 from Mazi import Maze
 
-mazifile = open('mazik.txt', 'r')
+mazifile = open('maze_50.txt', 'r')
 mazi = mazifile.readline()
 #print(mazi)
 params = mazi.split(' ')
