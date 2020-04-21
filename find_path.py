@@ -2,7 +2,7 @@ from Mazi import Maze
 from maze_solver import maze_solver
 
 # number of iterations to test each maze by every algorythm
-iteration_size = 50
+iteration_size = 30
 # maze sizes
 maze_size = [10, 30, 50]
 # algorythm types

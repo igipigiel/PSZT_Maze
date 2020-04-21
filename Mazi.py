@@ -77,9 +77,9 @@ class Maze:
             self.maze_map = maze_map
             #set entry and exit
             self.cell_at(self.entry_x, self.entry_y).walls['E'] = False
-            if self.exit_x == nx - 1:
+            if self.exit_x == self.nx - 1:
                 self.cell_at(self.exit_x,self.exit_y).walls['E'] = False
-            elif self.exit_y == ny -1:
+            elif self.exit_y == self.ny - 1:
                 self.cell_at(self.exit_x, self.exit_y).walls['S'] = False
 
 
@@ -209,10 +209,10 @@ class Maze:
 
             #delete walls on entry cell and exit cell
             if current_cell == self.cell_at(self.entry_x, self.entry_y):
-                current_cell.walls['N'] = False
+                current_cell.walls['E'] = False
 
             if current_cell == self.cell_at(self.exit_x, self.exit_y):
-                current_cell.walls['E'] = False
+                current_cell.walls['S'] = False
 
             # Choose a random neighbouring cell and move to it.
             direction, next_cell = random.choice(neighbours)
@@ -253,17 +253,15 @@ class Maze:
         print(maze_string, file = mazi)
         mazi.close()
 
-'''
-# Maze dimensions (ncols, nrows)
-nx, ny = 100, 100
-# Maze entry position
-self.ix, self.iy = 0, 0
 
-maze = Maze(nx, ny)
+# Maze dimensions (ncols, nrows)
+nx, ny = 30, 20
+# Maze entry position
+ix, iy = 0, 0
+
+maze = Maze(nx, ny, ix, iy)
 maze.make_maze()
 maze.save_file('mazik.txt')
 maze.write_svg('maze_gen.svg')
 
-#print(maze)
-'''
 
