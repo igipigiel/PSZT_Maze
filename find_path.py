@@ -2,13 +2,13 @@ from Mazi import Maze
 from maze_solver import maze_solver
 
 # number of iterations to test each maze by every algorythm
-iteration_size = 20
+iteration_size = 50
 # maze sizes
 maze_size = [10, 30, 50]
-# alborythm types
+# algorythm types
 algorythm = ['bfs', 'dfs', 'idfs']
 
-filename_txt = 'mazik.txt'
+filename_txt = 'maze.txt'
 filename_svg = 'maze_gen.svg'
 
 
@@ -29,5 +29,5 @@ for size in maze_size:
         for iter in range(0, iteration_size):
             maze = maze_solver(filename_txt_size, algorythm_type)
             time_passed += maze.find_path()
-        print('size ' + str(size) +  ' ' + algorythm_type +' : ' + str(time_passed/iteration_size))
+        print('maze of size ' + str(size) +  ', algorythm: ' + algorythm_type +', average time: ' + str(time_passed/iteration_size))
 
