@@ -96,9 +96,11 @@ class IDFS:
         entry_state = State(self.maze.cell_at(self.maze.entry_x, self.maze.entry_y))
         current_state = entry_state
         new_state = 0
-        depth = 10
+        depth = int(1.5*(self.maze.nx + self.maze.ny))
         d = 0
         i = 0
+
+        state_visited = 1
 
         while not path_found:
             while current_state.depth < depth:
@@ -110,6 +112,7 @@ class IDFS:
                             break
                         if not self.is_previous(new_state, current_state):
                             self.st_open.insert(0, new_state)
+                            state_visited += 1
                 if path_found:
                     current_state = new_state
                     break
@@ -120,4 +123,4 @@ class IDFS:
         while current_state != 0:
             path.append(current_state.cell)
             current_state = current_state.previous_state
-        return path
+        return path, state_visited

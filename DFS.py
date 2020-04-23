@@ -93,6 +93,7 @@ class DFS:
         next_state = State(self.maze.cell_at(x + h, y + v), current_state)
         return next_state
 
+
     def find_path(self):
 
         directions = ['N', 'S', 'W', 'E']
@@ -102,6 +103,8 @@ class DFS:
         current_state = entry_state
         new_state = 0
         depth = 0
+
+        state_visited = 1
 
         while True:
             for dir in directions:
@@ -113,6 +116,7 @@ class DFS:
                     #if we're not going backwards - write new state to the beggining of "st_open"
                     if not self.is_previous(new_state, current_state):
                         self.st_open.insert(0, new_state)
+                        state_visited += 1
 
             if path_found:
                 current_state = new_state
@@ -123,4 +127,4 @@ class DFS:
             path.append(current_state.cell)
             current_state = current_state.previous_state
 
-        return path
+        return path, state_visited

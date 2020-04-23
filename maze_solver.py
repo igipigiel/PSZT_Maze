@@ -9,9 +9,10 @@ from timeit import default_timer as timer
 
 class maze_solver:
 
-    def __init__(self, filename, type_):
-        self.type_ = type_
+    def __init__(self, filename, type, print = True):
+        self.type = type
         self.filename = filename
+        self.print = print
 
 
     def read_maze(self, filename):
@@ -25,10 +26,6 @@ class maze_solver:
             params = line.split(' ')
             nx = int(params[0])
             ny = int(params[1])
-            entry_x = int(params[2])
-            entry_y = int(params[3])
-            exit_x = int(params[4])
-            exit_y = int(params[5])
 
             cells = [[0 for y in range(ny)] for x in range(nx)]
 
@@ -50,20 +47,22 @@ class maze_solver:
         #maze.write_svg('read.svg')
 
 
-        if(self.type_ == 'bfs'):
+        if(self.type == 'bfs'):
             algorythm = BFS(maze)
-        elif(self.type_ == 'dfs'):
+        elif(self.type == 'dfs'):
             algorythm = DFS(maze)
-        elif(self.type_ == 'idfs'):
+        elif(self.type == 'idfs'):
             algorythm = IDFS(maze)
         else:
-            sys.exit('Wrong algorythm type, is: ' + self.type_ + ', should be: bfs or dfs or idfs, check spelling')
+            sys.exit('Wrong algorythm type, is: ' + self.type + ', should be: bfs or dfs or idfs, check spelling')
 
         time_start = timer()
-        path = algorythm.find_path()
+        path, state_visited = algorythm.find_path()
         time_stop = timer()
         time_passed = time_stop - time_start
-        maze.write_svg(self.filename[0:-4] +'_' + self.type_ + '.svg', path)
+        if self.print == True:
+            maze.write_svg(self.filename[0:-4] +'_' + self.type + '.svg', path)
 
-        return time_passed
+        return time_passed, state_visited
+
 
